@@ -1,0 +1,100 @@
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: rgba($background-dark, 0.9);
+    z-index: 1000;
+    border-bottom: 1px solid $secondary-color;
+  }
+  
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+  }
+  
+  .logo-text {
+    font-family: $font-secondary;
+    font-size: 2rem;
+    color: $primary-color;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+  
+  .nav-menu {
+    display: flex;
+    list-style: none;
+  }
+  
+  .nav-item {
+    margin-left: 2rem;
+  }
+  
+  .nav-link {
+    color: $text-color;
+    text-decoration: none;
+    font-size: 1.1rem;
+    @include transition(color);
+    
+    &:hover {
+      color: $primary-color;
+    }
+    
+    &::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -5px;
+      left: 0;
+      background-color: $primary-color;
+      @include transition(width);
+    }
+    
+    &:hover::after {
+      width: 100%;
+    }
+  }
+  
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    
+    .bar {
+      width: 25px;
+      height: 3px;
+      background-color: $text-color;
+      margin: 3px 0;
+      @include transition;
+    }
+  }
+  
+  // Responsividade
+  @media screen and (max-width: $breakpoint-mobile) {
+    .hamburger {
+      display: flex;
+    }
+    
+    .nav-menu {
+      position: fixed;
+      left: -100%;
+      top: 70px;
+      flex-direction: column;
+      background-color: $background-dark;
+      width: 100%;
+      text-align: center;
+      @include transition(left);
+      box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+      padding: 2rem 0;
+      border-top: 1px solid $secondary-color;
+    }
+    
+    .nav-menu.active {
+      left: 0;
+    }
+    
+    .nav-item {
+      margin: 1.5rem 0;
+    }
+  }

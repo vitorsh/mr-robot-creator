@@ -1,0 +1,227 @@
+section {
+    @include section-padding;
+  }
+  
+  .section-dark {
+    background-color: #111;
+  }
+  
+  .section-darker {
+    background-color: $background-darker;
+  }
+  
+  .section-title {
+    font-family: $font-secondary;
+    font-size: 3rem;
+    color: $primary-color;
+    text-align: center;
+    margin-bottom: 3rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+  
+  // About Section
+  .about-content {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+  }
+  
+  .about-text {
+    flex: 2;
+    
+    p {
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+    }
+  }
+  
+// Estilos para imagens
+.about-image {
+    max-width: 340px;
+    
+    width: 100%;
+    height: auto;
+    border: 2px solid $secondary-color;
+    box-shadow: 0 0 20px rgba($primary-color, 0.3);
+    transition: transform 0.3s ease;
+    
+    &:hover {
+      transform: scale(1.02);
+    }
+  }
+  
+  // Estilos para as fases do enredo com imagens
+  .plot-phase {
+    position: relative;
+    overflow: hidden;
+    
+    .plot-image {
+    height: 200px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+    }
+    
+    &:hover {
+      .plot-image img {
+        transform: scale(1.05);
+      }
+    }
+  }
+  
+  // Estilos para imagens dos personagens
+  .character-image {
+    height: 250px;
+    overflow: hidden;
+    
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+  }
+  
+  .character-card:hover {
+    .character-image img {
+      transform: scale(1.1);
+    }
+  }
+  
+  // Estilos para a galeria
+  .gallery-item {
+    height: 200px;
+    overflow: hidden;
+    
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: all 0.5s ease;
+    }
+    
+    &:hover {
+      img {
+        transform: scale(1.1);
+        filter: grayscale(50%) brightness(70%);
+      }
+    }
+  }
+
+  // Efeitos sombrios para imagens
+.dark-filter {
+    filter: brightness(0.7) contrast(1.2) grayscale(20%);
+  }
+  
+  .blood-effect {
+    position: relative;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('../images/sections/blood-splatter.png') no-repeat center center;
+      background-size: cover;
+      opacity: 0.3;
+      pointer-events: none;
+    }
+  }
+
+// Plot Section
+.plot-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+
+  .plot-phase {
+    background-color: #1a1a1a;
+    padding: 2rem;
+    border-left: 4px solid $primary-color;
+    @include transition(transform);
+    
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba($primary-color, 0.2);
+    }
+    
+    h3 {
+      color: $primary-color;
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+  }
+  
+  // Characters Section
+  .characters-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+  
+  .character-card {
+    background-color: #1a1a1a;
+    overflow: hidden;
+    @include transition(transform);
+    
+    &:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 20px rgba($primary-color, 0.3);
+    }
+  }
+  
+  .character-image {
+    height: 250px;
+  }
+  
+  .character-info {
+    padding: 1.5rem;
+    
+    h3 {
+      color: $primary-color;
+      margin-bottom: 0.5rem;
+      font-size: 1.5rem;
+    }
+  }
+  
+  // Gallery Section
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+  
+  .gallery-item {
+    height: 200px;
+    background-color: #1a1a1a;
+    border: 1px solid $secondary-color;
+    @include flex-center;
+    color: $text-muted;
+    font-style: italic;
+    @include transition;
+    
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba($primary-color, 0.3);
+    }
+  }
+  
+  // Responsividade
+  @media screen and (max-width: $breakpoint-mobile) {
+    .about-content {
+      flex-direction: column;
+    }
+    
+    .plot-content, .characters-grid {
+      grid-template-columns: 1fr;
+    }
+  }
